@@ -4,6 +4,16 @@ const Joi = require("joi");
 const express = require("express");
 const app = express();
 const router = express.Router();
+const multer = require("multer");
+
+var storage = multer.diskStorage({
+  destination: 'uploads',
+  filename: function (req, file, cb) {
+    cb(null,Date.now()+file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 app.set("views", "./views");
 app.set("view engine", "pug");
 
@@ -19,6 +29,10 @@ const genreSchema = new mongoose.Schema({
   prix: {
     type: Number,
   },
+  productImage: {
+    type: String,
+    required: true,
+  },
 });
 
 const Genre = mongoose.model("voyage", genreSchema);
@@ -32,11 +46,13 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single("productImage"), async (req, res) => {
+  console.log(req.file);
   let genre = new Genre({
     depart: req.body.depart,
     arrive: req.body.arrive,
     prix: req.body.prix,
+    productImage: req.file.path,
   });
   await genre.save();
   res.send(genre);

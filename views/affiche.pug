@@ -1,0 +1,13 @@
+html
+    head
+        title= title
+        link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
+    body
+    .container
+        each voyage,i in voyages
+                ul.list-group 
+                    li.list-group-item
+                        h1 voyage
+                        p depart : #{voyage.depart} - arrive : #{voyage.arrive}
+                        p prix : #{voyage.prix}
+                        a.btn.btn-primary.btn-lg(href='/api/voyage/'+voyage.id , role='button') réserver

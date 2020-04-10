@@ -1,19 +1,22 @@
 const mongoose = require("mongoose");
-const genres = require("./routes/genres");
+
+const voyages = require("./routes/voyage");
 const express = require("express");
 const app = express();
+app.use(express.static("./public"));
 
 mongoose
   .connect("mongodb://localhost/vidly")
   .then(() => {
     console.log("connect to db");
   })
-  .catch(() => {
-    console.log("problem to connect to data base");
-  });;
+  .catch((err) => {
+    console.log("problem to connect to data base ", err);
+  });
 
 app.use(express.json());
-app.use("/api/genres", genres);
+
+app.use("/api/voyage", voyages);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

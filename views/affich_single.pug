@@ -1,11 +1,49 @@
-html
-    head
-        title= title
-        link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
-    body
-    .container
-         ul.list-group 
-            li.list-group-item
-                h1 voyage
-                p depart : #{voyages.depart} - arrive : #{voyages.arrive}
-                p prix : #{voyages.prix}
+extends layout
+block content
+    .popular_places_area
+        .container
+            .row
+                .col-lg-8.mb-5.mb-lg-0
+                    .blog_left_sidebar
+                        article.blog_item
+                            .blog_item_img
+                                img.card-img.rounded-0(src='/'+voyages.productImage, alt='')
+                                a.blog_item_date(href='#')
+                                    h3 15
+                                    p Jan
+                            .blog_details
+                                a.d-inline-block(href='single-blog.html')
+                                    h2 Google inks pact for new 35-storey office
+                                p
+                                    | That dominion stars lights dominion divide years for fourth have don't stars is that
+                                    | he earth it first without heaven in place seed it second morning saying.
+                                ul.blog-info-link
+                                    li
+                                        a(href='#')
+                                        i.fa.fa-user
+                                        |  Travel, Lifestyle
+                                    li
+                                        a(href='#')
+                                            i.fa.fa-comments
+                                            |  03 Comments
+            .destination_details_info
+                .container
+                    .row.justify-content-center
+                        .destination_info
+                            h3 Description
+                            p
+                                | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.
+                            p
+                                | Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.
+                            .single_destination
+                                h4 Day-01
+                                p
+                                | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.
+                            .single_destination
+                                h4 Day-02
+                                p
+                                | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.
+                            .single_destination
+                                h4 Day-03
+                                p
+                                | There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.

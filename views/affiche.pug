@@ -1,13 +1,32 @@
-html
-    head
-        title= title
-        link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
-    body
-    .container
-        each voyage,i in voyages
-                ul.list-group 
-                    li.list-group-item
-                        h1 voyage
-                        p depart : #{voyage.depart} - arrive : #{voyage.arrive}
-                        p prix : #{voyage.prix}
-                        a.btn.btn-primary.btn-lg(href='/api/voyage/'+voyage.id , role='button') réserver
+extends layout
+block content
+    .popular_places_area
+        .container
+            .row
+                each val in voyages
+                    .col-lg-4.col-md-6
+                        .single_place
+                            .thumb
+                                img(src='/'+val.productImage, alt='')
+                                a.prise(href='#') #{val.prix}DT
+                            .place_info
+                                a(href='/api/voyage/'+val.id)
+                                    h3 #{val.arrive}
+                                p #{val.depart}
+                                .rating_days.d-flex.justify-content-between
+                                    span.d-flex.justify-content-center.align-items-center
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        a(href='#') (20 Review)
+                                    .days
+                                        i.fa.fa-clock-o
+                                        a(href='#') 5 Days
+            
+                                                
+                        //- h1 voyage
+                        //- p depart : #{voyage.depart} - arrive : #{voyage.arrive}
+                        //- p prix : #{voyage.prix}
+                        //- a.btn.btn-primary.btn-lg(href='/api/voyage/'+voyage.id , role='button') réserver

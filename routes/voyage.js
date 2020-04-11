@@ -7,9 +7,10 @@ const router = express.Router();
 const multer = require("multer");
 
 var storage = multer.diskStorage({
-  destination: 'uploads',
+  destination: "uploads",
   filename: function (req, file, cb) {
-    cb(null,Date.now()+file.originalname);
+    cb(null, Date.now() + file.originalname);
+    console.log(file);
   },
 });
 
@@ -44,6 +45,7 @@ router.get("/", async (req, res) => {
     title: "Amine",
     voyages: genres,
   });
+  
 });
 
 router.post("/", upload.single("productImage"), async (req, res) => {
@@ -52,8 +54,9 @@ router.post("/", upload.single("productImage"), async (req, res) => {
     depart: req.body.depart,
     arrive: req.body.arrive,
     prix: req.body.prix,
-    productImage: req.file.path,
+    productImage: req.file.filename,
   });
+  console.log(genre);
   await genre.save();
   res.send(genre);
 });

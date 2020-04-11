@@ -11,8 +11,7 @@ block content
                                 a.prise(href='#') #{val.prix}DT
                             .place_info
                                 a(href='/api/voyage/'+val.id)
-                                    h3 #{val.arrive}
-                                p #{val.depart}
+                                    h3 #{val.depart} vers #{val.arrive}
                                 .rating_days.d-flex.justify-content-between
                                     span.d-flex.justify-content-center.align-items-center
                                         i.fa.fa-star
